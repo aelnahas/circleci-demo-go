@@ -27,7 +27,7 @@ jobs:
             CONTACTS_DB_MIGRATIONS: /home/circleci/project/db/migrations            
           command: | 
             go list ./... | circleci tests run  \
-               --command='xargs gotestsum --junitfile ${TEST_RESULTS}/gotestsum-report.xml' \
+               --command='xargs gotestsum --junitfile ${TEST_RESULTS}/gotestsum-report.xml --format testname' \
                --fail-fast                       
                --batch-count=3
       - run: make 
@@ -57,3 +57,5 @@ workflows:
   build-workflow:
     jobs:
       - build
+
+# VS Code Extension Version: 1.4.0
