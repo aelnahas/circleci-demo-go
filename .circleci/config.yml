@@ -27,9 +27,8 @@ jobs:
             CONTACTS_DB_MIGRATIONS: /home/circleci/project/db/migrations            
           command: | 
             go list ./... | circleci tests run  \
-               --command='xargs gotestsum --format testname --junitfile ${TEST_RESULTS}/gotestsum-report.xml --' \
-               --fail-fast \                     
-               --batch-count=3
+              --command='xargs gotestsum --format testname --junitfile ${TEST_RESULTS}/gotestsum-report.xml --' \
+              --fail-fast --batch-count=3
       - run: make 
       - save_cache:
           key: go-mod-v4-{{ checksum "go.sum" }}
